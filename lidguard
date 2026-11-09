@@ -47,6 +47,7 @@ case "${1:-status}" in
       echo "  lid closed for $(( ($(date +%s) - $(cat /var/db/lidguard/closed_since)) / 60 )) min"
     fi
     pmset -g batt | tail -1 | sed 's/^/  /'
+    exit 0
     ;;
   *) echo "usage: lidguard install|uninstall|status|on|off|hours <n>|battery <pct>|log [n]"; exit 1 ;;
 esac
