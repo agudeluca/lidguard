@@ -1,0 +1,52 @@
+#!/bin/bash
+# lidguard CLI: install | uninstall | status | on | off | hours <n> | battery <pct> | log
+set -eu
+
+DIR="$(cd "$(dirname "$0")" && pwd)"
+CONF=/etc/lidguard.conf
+PLIST=/Library/LaunchDaemons/com.lidguard.plist
+BIN=/usr/local/libexec/lidguard.sh
+
+need_root() { [ "$(id -u)" = 0 ] || { echo "run with sudo: sudo $0 $*"; exit 1; }; }
+
+set_conf() { # key value
+  touch "$CONF"
+  if grep -q "^$1=" "$CONF"; then sed -i '' "s/^$1=.*/$1=$2/" "$CONF"; else echo "$1=$2" >>"$CONF"; fi
+  /bin/bash "$BIN"
+}
+
+case "${1:-status}" in
+  install)
+    need_root install
+    mkdir -p /usr/local/libexec
+    install -m 755 -o root -g wheel "$DIR/lidguard.sh" "$BIN"
+    install -m 644 -o root -g wheel "$DIR/com.lidguard.plist" "$PLIST"
+    [ -e "$CONF" ] || printf 'ENABLED=1\nMAX_HOURS=4\nMIN_BATTERY=20\n' >"$CONF"
+    launchctl bootout system "$PLIST" 2>/dev/null || true
+    launchctl bootstrap system "$PLIST"
+    echo "installed; checks every minute"
+    ;;
+  uninstall)
+    need_root uninstall
+    launchctl bootout system "$PLIST" 2>/dev/null || true
+    rm -f "$PLIST" "$BIN" "$CONF"
+    rm -rf /var/db/lidguard
+    pmset -a disablesleep 0
+    echo "uninstalled; normal sleep restored"
+    ;;
+  on) need_root on; set_conf ENABLED 1; echo "on" ;;
+  off) need_root off; set_conf ENABLED 0; echo "off: normal macOS sleep" ;;
+  hours) need_root hours; set_conf MAX_HOURS "${2:?hours}"; echo "max lid-closed time: $2 h" ;;
+  battery) need_root battery; set_conf MIN_BATTERY "${2:?pct}"; echo "sleeps under $2% on battery" ;;
+  log) tail -n "${2:-20}" /var/log/lidguard.log ;;
+  status)
+    launchctl print system/com.lidguard >/dev/null 2>&1 && echo "daemon: running" || echo "daemon: NOT installed"
+    [ -r "$CONF" ] && sed 's/^/  /' "$CONF"
+    echo "  SleepDisabled=$(pmset -g | awk '/SleepDisabled/ {print $2}')"
+    if [ -s /var/db/lidguard/closed_since ]; then
+      echo "  lid closed for $(( ($(date +%s) - $(cat /var/db/lidguard/closed_since)) / 60 )) min"
+    fi
+    pmset -g batt | tail -1 | sed 's/^/  /'
+    ;;
+  *) echo "usage: lidguard install|uninstall|status|on|off|hours <n>|battery <pct>|log [n]"; exit 1 ;;
+esac
