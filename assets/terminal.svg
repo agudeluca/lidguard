@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400" font-family="'SF Mono', Menlo, Consolas, monospace">
+  <rect width="1200" height="400" rx="20" fill="#0f172a"/>
+  <rect width="1200" height="44" rx="20" fill="#1e293b"/>
+  <rect y="24" width="1200" height="20" fill="#1e293b"/>
+  <circle cx="30" cy="22" r="7" fill="#f87171"/><circle cx="54" cy="22" r="7" fill="#fbbf24"/><circle cx="78" cy="22" r="7" fill="#34d399"/>
+  <text x="600" y="28" fill="#94a3b8" font-size="15" text-anchor="middle">lidguard — zsh</text>
+  <g font-size="19">
+    <text x="36" y="90"><tspan fill="#34d399">$</tspan><tspan fill="#e2e8f0"> sudo ./lidguard install</tspan></text>
+    <text x="36" y="120" fill="#94a3b8">installed; checks every minute</text>
+    <text x="36" y="170"><tspan fill="#34d399">$</tspan><tspan fill="#e2e8f0"> lidguard status</tspan></text>
+    <text x="36" y="200" fill="#a5b4fc">daemon: running</text>
+    <text x="36" y="228" fill="#94a3b8">  ENABLED=1   MAX_HOURS=4   MIN_BATTERY=20</text>
+    <text x="36" y="256" fill="#94a3b8">  SleepDisabled=1</text>
+    <text x="36" y="284" fill="#fbbf24">  lid closed for 37 min</text>
+    <text x="36" y="312" fill="#94a3b8">  -InternalBattery-0   73%; discharging; 7:49 remaining</text>
+    <text x="36" y="362"><tspan fill="#34d399">$</tspan><tspan fill="#e2e8f0"> sudo lidguard hours 6</tspan><tspan fill="#64748b">   # tweak anytime</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="340" viewBox="0 0 1200 340" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#94a3b8"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="340" rx="24" fill="#f8fafc"/>
+  <text x="600" y="52" fill="#0f172a" font-size="28" font-weight="800" text-anchor="middle">How it works</text>
+  <text x="600" y="82" fill="#64748b" font-size="17" text-anchor="middle">A tiny launchd daemon checks the lid and the battery every minute.</text>
+
+  <!-- card 1 -->
+  <g transform="translate(60 120)">
+    <rect width="320" height="180" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="44" cy="46" r="24" fill="#dbeafe"/>
+    <text x="44" y="55" font-size="24" text-anchor="middle">💻</text>
+    <text x="84" y="44" fill="#0f172a" font-size="21" font-weight="700">Lid open</text>
+    <text x="84" y="68" fill="#2563eb" font-size="15" font-weight="600">sleep disabled</text>
+    <text x="24" y="114" fill="#475569" font-size="16">Closing the lid won't stop your</text>
+    <text x="24" y="136" fill="#475569" font-size="16">builds, backups or deploys.</text>
+    <text x="24" y="158" fill="#475569" font-size="16">The timer resets.</text>
+  </g>
+  <line x1="390" y1="210" x2="430" y2="210" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- card 2 -->
+  <g transform="translate(440 120)">
+    <rect width="320" height="180" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="44" cy="46" r="24" fill="#ede9fe"/>
+    <text x="44" y="55" font-size="24" text-anchor="middle">⏱</text>
+    <text x="84" y="44" fill="#0f172a" font-size="21" font-weight="700">Lid closed</text>
+    <text x="84" y="68" fill="#7c3aed" font-size="15" font-weight="600">keeps working</text>
+    <text x="24" y="114" fill="#475569" font-size="16">Counts how long it has been</text>
+    <text x="24" y="136" fill="#475569" font-size="16">closed. After MAX_HOURS (4 h)</text>
+    <text x="24" y="158" fill="#475569" font-size="16">it puts the Mac to sleep.</text>
+  </g>
+  <line x1="770" y1="210" x2="810" y2="210" stroke="#94a3b8" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- card 3 -->
+  <g transform="translate(820 120)">
+    <rect width="320" height="180" rx="18" fill="#ffffff" stroke="#e2e8f0" stroke-width="2"/>
+    <circle cx="44" cy="46" r="24" fill="#dcfce7"/>
+    <text x="44" y="55" font-size="24" text-anchor="middle">🔋</text>
+    <text x="84" y="44" fill="#0f172a" font-size="21" font-weight="700">Low battery</text>
+    <text x="84" y="68" fill="#059669" font-size="15" font-weight="600">safety net</text>
+    <text x="24" y="114" fill="#475569" font-size="16">On battery under MIN_BATTERY</text>
+    <text x="24" y="136" fill="#475569" font-size="16">(20%) normal sleep comes back —</text>
+    <text x="24" y="158" fill="#475569" font-size="16">lid closed: it sleeps right away.</text>
+  </g>
+</svg>

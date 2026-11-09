@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Helvetica, Arial, sans-serif">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0b1026"/>
+      <stop offset="0.55" stop-color="#1b1f4a"/>
+      <stop offset="1" stop-color="#3a1f5c"/>
+    </linearGradient>
+    <linearGradient id="lid" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9dde6"/>
+      <stop offset="1" stop-color="#9aa2b3"/>
+    </linearGradient>
+    <linearGradient id="batt" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#34d399"/>
+      <stop offset="1" stop-color="#10b981"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7c83ff" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#7c83ff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="420" rx="28" fill="url(#bg)"/>
+  <!-- stars -->
+  <g fill="#ffffff">
+    <circle cx="90" cy="60" r="1.6" opacity=".8"/><circle cx="210" cy="120" r="1.2" opacity=".6"/>
+    <circle cx="330" cy="40" r="1.4" opacity=".7"/><circle cx="520" cy="80" r="1" opacity=".5"/>
+    <circle cx="1080" cy="60" r="1.6" opacity=".8"/><circle cx="1140" cy="160" r="1.1" opacity=".6"/>
+    <circle cx="960" cy="40" r="1.3" opacity=".7"/><circle cx="640" cy="30" r="1.2" opacity=".6"/>
+    <circle cx="150" cy="340" r="1.2" opacity=".5"/><circle cx="420" cy="380" r="1" opacity=".5"/>
+  </g>
+  <!-- moon -->
+  <path d="M1040 110a52 52 0 1 0 52 66a42 42 0 1 1-52-66z" fill="#fde68a" opacity=".95"/>
+
+  <!-- text -->
+  <text x="80" y="170" fill="#ffffff" font-size="76" font-weight="800" letter-spacing="-2">lidguard</text>
+  <text x="82" y="222" fill="#c7cbff" font-size="28" font-weight="500">Close the lid. Keep working.</text>
+  <text x="82" y="258" fill="#c7cbff" font-size="28" font-weight="500">Never wake up to a dead battery.</text>
+  <g font-size="18" font-weight="600">
+    <rect x="80" y="296" width="168" height="40" rx="20" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".25"/>
+    <text x="164" y="322" fill="#ffffff" text-anchor="middle">⏱  sleeps after 4 h</text>
+    <rect x="262" y="296" width="196" height="40" rx="20" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".25"/>
+    <text x="360" y="322" fill="#ffffff" text-anchor="middle">🔋  guards under 20%</text>
+    <rect x="472" y="296" width="150" height="40" rx="20" fill="#ffffff" fill-opacity=".1" stroke="#ffffff" stroke-opacity=".25"/>
+    <text x="547" y="322" fill="#ffffff" text-anchor="middle">⚙️  zero config</text>
+  </g>
+
+  <!-- closed laptop -->
+  <ellipse cx="880" cy="300" rx="230" ry="110" fill="url(#glow)"/>
+  <g transform="translate(700 255)">
+    <rect x="0" y="40" width="360" height="16" rx="8" fill="#6b7385"/>
+    <rect x="10" y="0" width="340" height="44" rx="10" fill="url(#lid)"/>
+    <circle cx="180" cy="22" r="7" fill="#ffffff" opacity=".7"/>
+    <rect x="150" y="54" width="60" height="5" rx="2.5" fill="#4b5263"/>
+  </g>
+  <!-- zzz / activity -->
+  <g fill="#a5f3fc" font-weight="800">
+    <text x="880" y="215" font-size="22" opacity=".9">still running…</text>
+  </g>
+  <!-- battery badge -->
+  <g transform="translate(1000 190)">
+    <rect x="0" y="0" width="92" height="40" rx="9" fill="none" stroke="#e5e7eb" stroke-width="3"/>
+    <rect x="92" y="13" width="7" height="14" rx="2" fill="#e5e7eb"/>
+    <rect x="6" y="6" width="58" height="28" rx="5" fill="url(#batt)"/>
+    <text x="46" y="28" fill="#0b1026" font-size="16" font-weight="800" text-anchor="middle">73%</text>
+  </g>
+</svg>
